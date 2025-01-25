@@ -1,11 +1,13 @@
 # assoparenteleve
 ## General Overview
-This project involves the development of a web application for a parent-teacher association. The application aims to streamline the management of temporary sales and product distribution while optimizing the organization of orders and users.
+This project involves the development of a web application for a parent-student association. The application aims to streamline the management of temporary sales and product distribution while optimizing the organization of orders and users.
 
-The parent-teacher association is a non-profit organization (under the French 1901 law) that brings together the parents of students at the school. It plays an important role in organizing events such as the Christmas market, carnival, and year-end fair. The association also organizes temporary sales to raise funds for the school and the children, such as purchasing school supplies, materials, and funding school trips.
+The parent-student association is a non-profit organization (under the French 1901 law) that brings together the parents of students at the school. It plays an important role in organizing events such as the Christmas market, carnival, and year-end fair. The association also organizes temporary sales to raise funds for the school and the students, such as purchasing school supplies, materials, and funding school trips.
 
 ## The Need
-The application enables the association to manage temporary product sales, with orders limited to specific timeframes (start and end dates). Orders are distributed across different locations at designated times. It also manages users by integrating information about the children (name and class), making it easier to handle order logistics and deliveries. This solution aims to improve and streamline the entire process, from order placement to product distribution.
+The application enables the association to manage temporary product sales, with orders limited to specific timeframes (start and end dates). Orders are distributed across different locations at designated times. It also manages users by integrating information about the students (name and class), making it easier to handle order logistics and deliveries. This solution aims to improve and streamline the entire process, from order placement to product distribution.
+
+
 
 
 Version de java : 17
