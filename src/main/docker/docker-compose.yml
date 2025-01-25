@@ -1,0 +1,8 @@
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_USER=ili
+      - POSTGRES_PASSWORD=ili

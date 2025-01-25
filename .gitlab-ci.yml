@@ -1,0 +1,54 @@
+stages:
+  - build
+  - code-quality
+  - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+
+cache:
+  paths:
+    - .m2/repository
+    - target/
+
+build_job:
+  stage: build
+  tags:
+    - docker2
+  image: maven:3.8.4-openjdk-17
+  script:
+    - mvn clean install -DskipTests
+
+code_quality:
+  stage: code-quality
+  tags:
+    - docker2
+  image: maven:3.8.4-openjdk-17
+  script:
+    - mvn  sonar:sonar -Dsonar.projectKey=Jee -Dsonar.host.url=http://sonarqube.univ-artois.fr -Dsonar.login=$SONAR_TOKEN
+
+
+test_job:
+  stage: test
+  services:
+    - name: postgres:latest
+      alias: postgres
+
+  variables:
+    POSTGRES_USER: ili
+    POSTGRES_PASSWORD: ili
+    POSTGRES_HOST_AUTH_METHOD: trust
+    QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/ili
+
+  tags:
+    - docker2
+  image: maven:3.8.4-openjdk-17
+  script:
+    - mvn test -Dtest=!AuthentificationEndpointTest
+  artifacts:
+    when: always
+    paths:
+      - target/surefire-reports
+    expire_in: 1 week
+

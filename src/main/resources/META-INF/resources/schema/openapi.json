@@ -1,0 +1,889 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "assoparenteleve API",
+    "version" : "1.0-SNAPSHOT"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080",
+    "description" : "Auto generated value"
+  }, {
+    "url" : "http://0.0.0.0:8080",
+    "description" : "Auto generated value"
+  } ],
+  "tags" : [ {
+    "name" : "Adulte",
+    "description" : "Operations about Adulte"
+  }, {
+    "name" : "Commande",
+    "description" : "Operations about Commande"
+  }, {
+    "name" : "Eleve",
+    "description" : "Operations about Eleve"
+  }, {
+    "name" : "Evenement",
+    "description" : "Operations about Evenement"
+  } ],
+  "paths" : {
+    "/adulte" : {
+      "get" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Get all adultes",
+        "description" : "Returns a list of all adultes",
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Adulte"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "No adultes found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Update an adulte",
+        "description" : "Returns the updated adulte",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Adulte"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Adulte updated successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Create a new adulte",
+        "description" : "Returns the created adulte",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Adulte"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Adulte created successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/adulte/mail/{mail}" : {
+      "get" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Get an adulte by Mail",
+        "description" : "Returns a single adulte",
+        "parameters" : [ {
+          "name" : "mail",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Adulte"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Adulte not found"
+          }
+        }
+      }
+    },
+    "/adulte/role" : {
+      "put" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Update an adult's role",
+        "description" : "Returns the updated adult with the new role",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Adulte"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Adult role updated successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/adulte/{id}" : {
+      "get" : {
+        "tags" : [ "Adulte" ],
+        "summary" : "Get an adulte by ID",
+        "description" : "Returns a single adulte",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Adulte"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Adulte not found"
+          }
+        }
+      }
+    },
+    "/auth/login" : {
+      "post" : {
+        "tags" : [ "Authentification Controller" ],
+        "summary" : "Log in",
+        "description" : "Authenticate a user and return a JWT token if successful",
+        "requestBody" : {
+          "description" : "The user's login credentials",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Adulte"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Authentication successful"
+          },
+          "401" : {
+            "description" : "Unauthorized, invalid credentials"
+          },
+          "400" : {
+            "description" : "Bad request, error occurred during authentication"
+          }
+        }
+      }
+    },
+    "/auth/login-admin" : {
+      "post" : {
+        "tags" : [ "Authentification Controller" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Adulte"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/auth/request-password-reset" : {
+      "post" : {
+        "tags" : [ "Authentification Controller" ],
+        "summary" : "Request password reset",
+        "description" : "Sends a password reset email to the user with the given email",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Password reset email sent successfully"
+          },
+          "404" : {
+            "description" : "User not found with the given email"
+          }
+        }
+      }
+    },
+    "/auth/reset-password" : {
+      "post" : {
+        "tags" : [ "Authentification Controller" ],
+        "summary" : "Reset password",
+        "description" : "Resets the user's password using the given token and new password",
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Password reset successfully"
+          },
+          "404" : {
+            "description" : "No user found with the given token"
+          },
+          "500" : {
+            "description" : "Error while hashing the password or updating the user"
+          }
+        }
+      }
+    },
+    "/commande" : {
+      "put" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Update an commande",
+        "description" : "Returns the updated commande",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Commande"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Commande updated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Commande"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Create a new commande",
+        "description" : "Returns the created commande",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Commande"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Commande created successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/commande/adulte/{id}" : {
+      "get" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Get an commande by ID",
+        "description" : "Returns a single commande",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Commande"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Commande not found"
+          }
+        }
+      }
+    },
+    "/commande/evenement/{id}" : {
+      "get" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Get an commande by ID",
+        "description" : "Returns a single commande",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Commande"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Commande not found"
+          }
+        }
+      }
+    },
+    "/commande/send-reminder/{id}" : {
+      "post" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Send a reminder email for unpaid orders",
+        "description" : "Sends a reminder email to all unpaid orders related to a specific event",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Emails sent successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/commande/{id}" : {
+      "get" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Get an commande by ID",
+        "description" : "Returns a single commande",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Commande"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Commande not found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Commande" ],
+        "summary" : "Delete a commande",
+        "description" : "Deletes a commande by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "commande deleted successfully"
+          },
+          "404" : {
+            "description" : "commande not found"
+          }
+        }
+      }
+    },
+    "/eleve" : {
+      "get" : {
+        "tags" : [ "Eleve" ],
+        "summary" : "Get all eleves",
+        "description" : "Returns a list of all eleves",
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Eleve"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "No eleves found"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Eleve" ],
+        "summary" : "Create a new eleve",
+        "description" : "Returns the created eleve",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Eleve"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Eleve created successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/eleve/{id}" : {
+      "get" : {
+        "tags" : [ "Eleve" ],
+        "summary" : "Get an eleve by ID",
+        "description" : "Returns a single eleve",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Eleve"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Eleve not found"
+          }
+        }
+      }
+    },
+    "/evenement" : {
+      "get" : {
+        "tags" : [ "Evenement" ],
+        "summary" : "List all evenements",
+        "description" : "Returns a list of all evenements",
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Evenement"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "No evenements found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Evenement" ],
+        "summary" : "Update an evenement",
+        "description" : "Returns the updated evenement",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Evenement"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Evenement updated successfully",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Evenement"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Evenement" ],
+        "summary" : "Create a new evenement",
+        "description" : "Returns the created evenement",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Evenement"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Evenement created successfully"
+          },
+          "400" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/evenement/{id}" : {
+      "get" : {
+        "tags" : [ "Evenement" ],
+        "summary" : "Get an evenement by ID",
+        "description" : "Returns a single evenement",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Evenement"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Evenement not found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Evenement" ],
+        "summary" : "Delete an evenement",
+        "description" : "Deletes an evenement by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Evenement deleted successfully"
+          },
+          "404" : {
+            "description" : "Evenement not found"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Adulte" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "prenom" : {
+            "type" : "string"
+          },
+          "mail" : {
+            "type" : "string"
+          },
+          "role" : {
+            "$ref" : "#/components/schemas/Role"
+          },
+          "motDePasse" : {
+            "type" : "string"
+          },
+          "telephone" : {
+            "type" : "string"
+          },
+          "eleves" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Eleve"
+            }
+          },
+          "active" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Commande" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "payer" : {
+            "type" : "boolean"
+          },
+          "distribuer" : {
+            "type" : "boolean"
+          },
+          "evenement" : {
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "adulte" : {
+            "$ref" : "#/components/schemas/Adulte"
+          },
+          "eleve" : {
+            "$ref" : "#/components/schemas/Eleve"
+          },
+          "commandeProduits" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommandeProduit"
+            }
+          }
+        }
+      },
+      "CommandeProduit" : {
+        "type" : "object",
+        "properties" : {
+          "produit" : {
+            "$ref" : "#/components/schemas/Produit"
+          },
+          "quantite" : {
+            "format" : "int32",
+            "type" : "integer"
+          }
+        }
+      },
+      "Distribution" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "distributeur" : {
+            "type" : "string"
+          },
+          "lieu" : {
+            "type" : "string"
+          },
+          "dateDistribution" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Eleve" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "prenom" : {
+            "type" : "string"
+          },
+          "dateNaissance" : {
+            "type" : "string"
+          },
+          "niveau" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Evenement" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "dateDebut" : {
+            "type" : "string"
+          },
+          "dateFin" : {
+            "type" : "string"
+          },
+          "datePaiement" : {
+            "type" : "string"
+          },
+          "distributionList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Distribution"
+            }
+          },
+          "produitList" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Produit"
+            }
+          },
+          "valider" : {
+            "type" : "boolean"
+          },
+          "avecEleve" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Produit" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "fournisseur" : {
+            "type" : "string"
+          },
+          "prix" : {
+            "format" : "double",
+            "type" : "number"
+          },
+          "option" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Role" : {
+        "enum" : [ "SUPER_ADMIN", "ADMIN", "PARENT", "PROFESSOR" ],
+        "type" : "string"
+      }
+    },
+    "securitySchemes" : {
+      "SecurityScheme" : {
+        "type" : "http",
+        "description" : "Authentication",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+-- This file allow to write SQL commands that will be emitted in test and dev.
+-- The commands are commented as their support depends of the database
+-- insert into myentity (id, field) values(1, 'field-1');
+-- insert into myentity (id, field) values(2, 'field-2');
+-- insert into myentity (id, field) values(3, 'field-3');
+-- alter sequence myentity_seq restart with 4;
+-- insert into adulte (id,nom, prenom, role,datenaissance, motdepasse ,mail) values(1,'ok','test','admin','07/02/2000','mdp','mdp');
+-- insert into eleve (id,nom, prenom, niveau, datenaissance) values(1,'test','test','CP','07/02/1975');
+-- insert into adulte_eleve (adulte_id, eleve_id) values (1,1);
